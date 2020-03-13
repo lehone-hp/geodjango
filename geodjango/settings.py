@@ -29,15 +29,25 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'world'
+    # customized admin theme
+    'openwisp_utils.admin_theme',
+    'django.contrib.admin',
+    'django.contrib.sites',
+    'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'openwisp_users',
 ]
+
+AUTH_USER_MODEL = 'openwisp_users.User'
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +85,7 @@ WSGI_APPLICATION = 'geodjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-        'NAME': os.path.join(BASE_DIR, 'geodata'),
+        'NAME': os.path.join(f'{BASE_DIR}/openwisp_notifications', 'openwisps.notifications'),
     }
 }
 
