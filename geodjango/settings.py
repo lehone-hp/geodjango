@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'openwisp_users',
+    'openwisp_notifications'
 ]
 
 AUTH_USER_MODEL = 'openwisp_users.User'
@@ -83,11 +84,19 @@ WSGI_APPLICATION = 'geodjango.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-        'NAME': os.path.join(f'{BASE_DIR}/openwisp_notifications', 'openwisps.notifications'),
-    }
+    #'default': {
+    #    'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+    #    'NAME': os.path.join(f'{BASE_DIR}/openwisp_notifications', 'openwisps.notifications'),
+    #}
+     'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.mysql',
+            'NAME': 'openwisp_notifications',
+            'USER': 'root',
+            'PASSWORD': 'stcaponjr',
+            'HOST': '127.0.0.1',
+     }
 }
+
 
 
 # Password validation
